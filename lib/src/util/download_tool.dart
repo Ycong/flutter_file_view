@@ -26,7 +26,7 @@ class DownloadTool {
   static Future<DownloadStatus> downloadFile(
     String fileUrl,
     String filePath, {
-    ProgressCallback? onProgress,
+    ProgressCallback onProgress,
   }) async {
     try {
       Response response = await _dio().download(

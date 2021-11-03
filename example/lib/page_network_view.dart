@@ -17,9 +17,9 @@ class FileNetworkViewPage extends StatefulWidget {
   final String downloadPath;
 
   const FileNetworkViewPage({
-    Key? key,
-    required this.downloadUrl,
-    required this.downloadPath,
+    Key key,
+    this.downloadUrl,
+    this.downloadPath,
   }) : super(key: key);
 
   @override
@@ -32,7 +32,6 @@ class _FileNetworkViewPageState extends State<FileNetworkViewPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle.dark,
         backgroundColor: Colors.transparent,
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.black),

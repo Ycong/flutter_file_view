@@ -14,8 +14,8 @@ class FileLocalViewPage extends StatefulWidget {
   final String filePath;
 
   const FileLocalViewPage({
-    Key? key,
-    required this.filePath,
+    Key key,
+    this.filePath,
   }) : super(key: key);
 
   @override
@@ -27,7 +27,6 @@ class _FileLocalViewPageState extends State<FileLocalViewPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle.light,
         title: const Text("文档"),
       ),
       body: FileLocalViewer(localFilePath: widget.filePath),
