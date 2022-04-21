@@ -200,7 +200,7 @@ class FlutterFileViewPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         Log.e(TAG, "onAttachedToActivity")
 
         // App启动时，开始初始化X5内核
-        initX5()
+//        initX5()
 
         // 因TbsReaderView问题，故在此注册
         mFlutterPluginBinding!!.platformViewRegistry.registerViewFactory(viewName,
