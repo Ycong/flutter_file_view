@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_file_view/flutter_file_view.dart';
 import 'package:flutter_file_view_example/page_network_view.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -59,6 +60,7 @@ class _HomePageState extends State<HomePage> {
     'ppt.ppt',
     'pdf.pdf',
     'txt.txt',
+    'test.test'
   ];
 
   List<String> files = [];
@@ -104,7 +106,13 @@ class _HomePageState extends State<HomePage> {
 
           return GestureDetector(
             onTap: () {
-              if (filePath.contains('http://') ||
+              FlutterFileView.getX5Status().then((value) {
+                print('状态:${value}');
+              });
+
+              if (filePath == 'test.test') {
+                FlutterFileView.initX5();
+              } else if (filePath.contains('http://') ||
                   filePath.contains('https://')) {
                 onNetworkTap(title, type, filePath);
               } else {
