@@ -15,8 +15,8 @@ import 'package:flutter_file_view/flutter_file_view.dart';
 
 class FileLocalViewer extends StatefulWidget {
   const FileLocalViewer({
-    Key key,
-    this.localFilePath,
+    Key? key,
+    required this.localFilePath,
     this.unsupportedPlatformTip,
     this.nonexistentFileTip,
     this.openFailTip,
@@ -38,35 +38,35 @@ class FileLocalViewer extends StatefulWidget {
   /// 不支持平台的提示
   /// 因仅支持Android、iOS双平台，暂未进行桌面平台以及web的适配，故需要该提示
   ///
-  final String unsupportedPlatformTip;
+  final String? unsupportedPlatformTip;
 
   ///
   /// Prompt that the file under this [localFilePath] path does not exist
   ///
   /// 此[localFilePath]路径下的文件不存在的提示
   ///
-  final String nonexistentFileTip;
+  final String? nonexistentFileTip;
 
   ///
   /// Prompt of failure to open file
   ///
   /// 打开文件失败的提示
   ///
-  final String openFailTip;
+  final String? openFailTip;
 
   ///
   /// Widget showing loading status
   ///
   /// 加载状态的部件
   ///
-  final Widget loadingWidget;
+  final Widget? loadingWidget;
 
   ///
   /// Unsupported file type widget
   ///
   /// 不支持的文件类型的部件
   ///
-  final Widget unsupportedTypeWidget;
+  final Widget? unsupportedTypeWidget;
 
   @override
   _FileLocalViewerState createState() => _FileLocalViewerState();
@@ -79,7 +79,7 @@ class _FileLocalViewerState extends State<FileLocalViewer> {
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance.addPostFrameCallback((callback) {
+    WidgetsBinding.instance!.addPostFrameCallback((callback) {
       changeStatus();
     });
   }
@@ -189,7 +189,7 @@ class _FileLocalViewerState extends State<FileLocalViewer> {
 
       if (isExists) {
         if (Platform.isAndroid) {
-          EX5Status eX5status = await FlutterFileView.getX5Status();
+          EX5Status? eX5status = await FlutterFileView.getX5Status();
           if (eX5status == EX5Status.success) {
             _setStatus(EViewStatus.success);
           } else {

@@ -11,10 +11,10 @@ import 'package:flutter_file_view/flutter_file_view.dart';
 
 class FileNetworkViewer extends StatefulWidget {
   const FileNetworkViewer({
-    Key key,
-    this.downloadUrl,
-    this.downloadPath,
-    this.onViewPressed,
+    Key? key,
+    required this.downloadUrl,
+    required this.downloadPath,
+    required this.onViewPressed,
     this.fileShowName,
     this.fileType,
     this.fileNameStyle,
@@ -55,38 +55,38 @@ class FileNetworkViewer extends StatefulWidget {
     'Use downloadUrl instead. '
     'This feature was deprecated after v1.2.0',
   )
-  final String fileShowName;
+  final String? fileShowName;
 
   @Deprecated(
     'Use downloadUrl instead. '
     'This feature was deprecated after v1.2.0',
   )
-  final String fileType;
+  final String? fileType;
 
   ///
   /// The style of the displayed file name
   ///
   /// 所展示文件名称的风格
   ///
-  final TextStyle fileNameStyle;
+  final TextStyle? fileNameStyle;
 
   ///
   /// The style of the text showing the size of the file resource
   ///
   /// 所展示文件资源大小的文字的风格
   ///
-  final TextStyle fileSizeStyle;
+  final TextStyle? fileSizeStyle;
 
   ///
   /// The style of the button
   ///
   /// 按钮样式
   ///
-  final String downloadTitle;
-  final String viewTitle;
-  final Color btnTitleColor;
-  final Color btnBgColor;
-  final BorderSide borderSide;
+  final String? downloadTitle;
+  final String? viewTitle;
+  final Color? btnTitleColor;
+  final Color? btnBgColor;
+  final BorderSide? borderSide;
 
   @override
   _FileNetworkViewerState createState() => _FileNetworkViewerState();
@@ -111,7 +111,7 @@ class _FileNetworkViewerState extends State<FileNetworkViewer> {
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance.addPostFrameCallback((callback) {
+    WidgetsBinding.instance!.addPostFrameCallback((callback) {
       loadData();
     });
   }

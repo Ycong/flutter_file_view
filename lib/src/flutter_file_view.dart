@@ -13,8 +13,8 @@ class FlutterFileView {
 
   static Stream<EX5Status> get initController => _initController.stream;
 
-  static Future<String> get platformVersion async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
+  static Future<String?> get platformVersion async {
+    final String? version = await _channel.invokeMethod('getPlatformVersion');
     return version;
   }
 
@@ -35,7 +35,7 @@ class FlutterFileView {
   ///
   /// only Android, iOS Ignore
   ///
-  static Future<EX5Status> getX5Status() async {
+  static Future<EX5Status?> getX5Status() async {
     if (Platform.isAndroid) {
       int i = await _channel.invokeMethod('getX5Status');
       return EX5StatusExtension.getTypeValue(i);
@@ -51,7 +51,7 @@ class FlutterFileView {
   static Future<DownloadStatus> downloadFileByNet(
     String fileUrl,
     String filePath, {
-    ProgressCallback onProgress,
+    ProgressCallback? onProgress,
   }) async {
     return await DownloadTool.downloadFile(
       fileUrl,
