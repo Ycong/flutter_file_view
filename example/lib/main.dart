@@ -49,6 +49,9 @@ class _HomePageState extends State<HomePage> {
     'jpg.jpg',
     'jpeg.jpeg',
     'png.png',
+    '1.docx',
+    '1.xlsx',
+    '1.txt',
   ];
 
   List<String> androidFiles = [
@@ -60,7 +63,10 @@ class _HomePageState extends State<HomePage> {
     'ppt.ppt',
     'pdf.pdf',
     'txt.txt',
-    'test.test'
+    'test.test',
+    '1.docx',
+    '1.xlsx',
+    '1.txt',
   ];
 
   List<String> files = [];

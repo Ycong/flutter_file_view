@@ -52,15 +52,29 @@ class FileView: NSObject, FlutterPlatformView {
   
   func openFile(filePath: String, webView: WKWebView)  {
     // self.controller.setFilePath(filePath: filePath)
-    
-    let url = URL.init(fileURLWithPath: filePath)
-    
-    if #available(iOS 9.0, *) {
-      webView.loadFileURL(url, allowingReadAccessTo: url)
-    } else {
-      let request = URLRequest.init(url: url)
-      webView.load(request)
-    }
+      let url = URL.init(fileURLWithPath: filePath)
+      
+      if filePath.hasSuffix(".txt") {
+          // 先进行NSUTF8StringEncoding编码
+          var body = try? String(contentsOf: url, encoding: String.Encoding.utf8)
+          if (body == nil) {// 如果没有编码成功再尝试GBK和GB18030编码
+              let encode = CFStringConvertEncodingToNSStringEncoding(UInt32(CFStringEncodings.GB_18030_2000.rawValue))
+              let encoding = String.Encoding.init(rawValue: encode)
+              body = try? String(contentsOf: url, encoding: encoding)
+          }
+          
+          if let body = body {
+              webView.loadHTMLString(body, baseURL: nil)
+              return
+          }
+      }
+      
+      if #available(iOS 9.0, *) {
+        webView.loadFileURL(url, allowingReadAccessTo: url)
+      } else {
+        let request = URLRequest.init(url: url)
+        webView.load(request)
+      }
   }
 
   func isSupportOpen() -> Bool {
